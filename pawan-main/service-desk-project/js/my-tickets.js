@@ -1,3 +1,7 @@
+const API_BASE = (window.location.protocol.startsWith('http') && window.location.port !== '8080')
+  ? 'http://localhost:8080'
+  : '';
+
 document.addEventListener('DOMContentLoaded', async () => {
   const u = JSON.parse(localStorage.getItem('helpdesk_current_user') || 'null');
   if (!u) {
@@ -8,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   let tickets = [];
   try {
-    const r = await fetch(`/api/tickets/user/${u.userId}`);
+    const r = await fetch(`${API_BASE}/api/tickets/user/${u.userId}`);
     if (r.ok) {
       const data = await r.json();
       if (Array.isArray(data)) tickets = data;

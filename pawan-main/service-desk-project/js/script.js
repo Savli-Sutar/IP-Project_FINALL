@@ -1,3 +1,7 @@
+const API_BASE = (window.location.protocol.startsWith('http') && window.location.port !== '8080')
+  ? 'http://localhost:8080'
+  : '';
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('login-form');
   if (!form) return;
@@ -20,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const r = await fetch('/api/auth/login', {
+      const r = await fetch(`${API_BASE}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, role })
@@ -75,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => { window.location.href = user.role === 'admin' ? 'admin-dashboard.html' : 'my-tickets.html'; }, 400);
             return;
           }
-          if (note) note.textContent = 'Backend unreachable at http://localhost:8080. For demo, use employee@company.com / password123 or support@company.com / password123.';
+          if (note) note.textContent = 'Backend unreachable. For demo, use employee@company.com / password123 or support@company.com / password123.';
           return;
         }
       }

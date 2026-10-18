@@ -1,3 +1,7 @@
+const API_BASE = (window.location.protocol.startsWith('http') && window.location.port !== '8080')
+  ? 'http://localhost:8080'
+  : '';
+
 const SLA_RULES = {
   Critical: { response: 1, resolution: 4 },
   High: { response: 2, resolution: 8 },
@@ -45,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       try {
-        const r = await fetch('/api/tickets', {
+        const r = await fetch(`${API_BASE}/api/tickets`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

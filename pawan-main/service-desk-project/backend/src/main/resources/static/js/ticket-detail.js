@@ -1,3 +1,7 @@
+const API_BASE = (window.location.protocol.startsWith('http') && window.location.port !== '8080')
+  ? 'http://localhost:8080'
+  : '';
+
 document.addEventListener('DOMContentLoaded', async () => {
   const u = JSON.parse(localStorage.getItem('helpdesk_current_user') || 'null');
   if (!u) {
@@ -12,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   let t = null;
   try {
-    const r = await fetch(`/api/tickets/${id}`);
+    const r = await fetch(`${API_BASE}/api/tickets/${id}`);
     if (r.ok) {
       t = await r.json();
     }
@@ -78,7 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       saveStatus.onclick = async () => {
         const newStatus = statusUpdate ? statusUpdate.value : t.status;
         try {
-          const rr = await fetch(`/api/tickets/${id}/status`, {
+          const rr = await fetch(`${API_BASE}/api/tickets/${id}/status`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ status: newStatus })

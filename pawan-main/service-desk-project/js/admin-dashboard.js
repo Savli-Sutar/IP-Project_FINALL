@@ -1,3 +1,7 @@
+const API_BASE = (window.location.protocol.startsWith('http') && window.location.port !== '8080')
+  ? 'http://localhost:8080'
+  : '';
+
 document.addEventListener('DOMContentLoaded', async () => {
   const u = JSON.parse(localStorage.getItem('helpdesk_current_user') || 'null');
   nav(u);
@@ -16,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   let tickets = [];
   try {
-    const r = await fetch('/api/tickets');
+    const r = await fetch(`${API_BASE}/api/tickets`);
     if (r.ok) {
       const data = await r.json();
       if (Array.isArray(data)) tickets = data;
@@ -44,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   let overdueCount = tickets.filter(t => (t.status !== 'Resolved' && t.status !== 'Closed') && new Date(t.resolutionDueAt) < new Date()).length;
 
   try {
-    const stRes = await fetch('/api/stats');
+    const stRes = await fetch(`${API_BASE}/api/stats`);
     if (stRes.ok) {
       const st = await stRes.json();
       total = st.total ?? total;
