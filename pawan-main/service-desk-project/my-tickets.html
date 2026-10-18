@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Tickets · Helpdesk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="app-nav">
+  <div class="app-nav__left">
+    <div class="wordmark">
+      <span class="wordmark__mark">HD</span>
+      <span class="wordmark__text">Helpdesk</span>
+    </div>
+    <ul class="app-nav__links">
+      <li><a href="raise-ticket.html">Raise Ticket</a></li>
+      <li><a href="my-tickets.html" class="is-active">My Tickets</a></li>
+      <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+    </ul>
+  </div>
+  <div class="app-nav__user">
+    <span class="user-chip" id="nav-user">Not signed in</span>
+    <button class="app-nav__signout" id="nav-signout" type="button">Sign out</button>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page__head">
+    <h1>My Tickets</h1>
+    <p>Track the status and SLA deadlines for tickets you've raised.</p>
+  </div>
+
+  <div class="card">
+
+    <div class="filter-bar">
+      <div class="filter-field filter-field--grow">
+        <label for="search">Search</label>
+        <input type="text" id="search" placeholder="Search by title or ticket ID">
+      </div>
+      <div class="filter-field">
+        <label for="status-filter">Status</label>
+        <select id="status-filter">
+          <option value="All">All statuses</option>
+          <option value="New">New</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Resolved">Resolved</option>
+          <option value="Closed">Closed</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Ticket ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>SLA</th>
+          </tr>
+        </thead>
+        <tbody id="tickets-body"></tbody>
+      </table>
+    </div>
+
+    <p class="empty-state" id="empty-state" style="display:none;">
+      No tickets found. <a href="raise-ticket.html">Raise your first ticket</a>.
+    </p>
+
+  </div>
+</div>
+
+<script src="js/my-tickets.js"></script>
+</body>
+</html>

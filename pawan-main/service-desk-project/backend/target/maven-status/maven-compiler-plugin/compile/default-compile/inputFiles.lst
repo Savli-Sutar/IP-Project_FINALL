@@ -1,0 +1,15 @@
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\controller\ApiController.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\controller\GlobalExceptionHandler.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\dto\LoginRequest.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\dto\StatusRequest.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\dto\TicketRequest.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\model\SlaRule.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\model\StatusHistory.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\model\Ticket.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\model\User.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\repo\SlaRuleRepository.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\repo\StatusHistoryRepository.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\repo\TicketRepository.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\repo\UserRepository.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\service\TicketService.java
+C:\Users\Win10\Desktop\service-desk-project\backend\src\main\java\com\servicedesk\ServiceDeskApplication.java

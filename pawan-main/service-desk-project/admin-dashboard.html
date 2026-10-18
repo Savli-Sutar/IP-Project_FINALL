@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard · Helpdesk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="app-nav">
+  <div class="app-nav__left">
+    <div class="wordmark">
+      <span class="wordmark__mark">HD</span>
+      <span class="wordmark__text">Helpdesk</span>
+    </div>
+    <ul class="app-nav__links">
+      <li><a href="raise-ticket.html">Raise Ticket</a></li>
+      <li><a href="my-tickets.html">My Tickets</a></li>
+      <li><a href="admin-dashboard.html" class="is-active">Admin Dashboard</a></li>
+    </ul>
+  </div>
+  <div class="app-nav__user">
+    <span class="user-chip" id="nav-user">Not signed in</span>
+    <button class="app-nav__signout" id="nav-signout" type="button">Sign out</button>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page__head">
+    <h1>Admin Dashboard</h1>
+    <p>All tickets raised across the organization, with live SLA status.</p>
+  </div>
+
+  <div class="card not-found" id="access-denied" style="display:none;">
+    <h1>IT Support access only</h1>
+    <p>Sign in with an IT Support account to view the admin dashboard.</p>
+    <a href="index.html" class="btn-primary btn-primary--inline" style="display:inline-block;">Sign in</a>
+  </div>
+
+  <div id="dashboard-content" style="display:none;">
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-card__label">Total tickets</div>
+        <div class="stat-card__value" id="stat-total">0</div>
+      </div>
+      <div class="stat-card stat-card--new">
+        <div class="stat-card__label">New</div>
+        <div class="stat-card__value" id="stat-new">0</div>
+      </div>
+      <div class="stat-card stat-card--progress">
+        <div class="stat-card__label">In Progress</div>
+        <div class="stat-card__value" id="stat-progress">0</div>
+      </div>
+      <div class="stat-card stat-card--overdue">
+        <div class="stat-card__label">Overdue</div>
+        <div class="stat-card__value" id="stat-overdue">0</div>
+      </div>
+      <div class="stat-card stat-card--resolved">
+        <div class="stat-card__label">Resolved / Closed</div>
+        <div class="stat-card__value" id="stat-resolved">0</div>
+      </div>
+    </div>
+
+    <div class="card">
+
+      <div class="filter-bar">
+        <div class="filter-field filter-field--grow">
+          <label for="search">Search</label>
+          <input type="text" id="search" placeholder="Search by title, ticket ID, or requester">
+        </div>
+        <div class="filter-field">
+          <label for="status-filter">Status</label>
+          <select id="status-filter">
+            <option value="All">All statuses</option>
+            <option value="New">New</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+            <option value="Closed">Closed</option>
+          </select>
+        </div>
+        <div class="filter-field">
+          <label for="priority-filter">Priority</label>
+          <select id="priority-filter">
+            <option value="All">All priorities</option>
+            <option value="Critical">Critical</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+        <div class="filter-field">
+          <label for="category-filter">Category</label>
+          <select id="category-filter">
+            <option value="All">All categories</option>
+            <option value="Hardware">Hardware</option>
+            <option value="Software">Software</option>
+            <option value="Network">Network</option>
+            <option value="Access">Account / Access</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Ticket ID</th>
+              <th>Title</th>
+              <th>Requester</th>
+              <th>Category</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>SLA</th>
+            </tr>
+          </thead>
+          <tbody id="tickets-body"></tbody>
+        </table>
+      </div>
+
+      <p class="empty-state" id="empty-state" style="display:none;">
+        No tickets match your filters.
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<script src="js/admin-dashboard.js"></script>
+</body>
+</html>

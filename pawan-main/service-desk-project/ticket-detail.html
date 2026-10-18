@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ticket Detail · Helpdesk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="app-nav">
+  <div class="app-nav__left">
+    <div class="wordmark">
+      <span class="wordmark__mark">HD</span>
+      <span class="wordmark__text">Helpdesk</span>
+    </div>
+    <ul class="app-nav__links">
+      <li><a href="raise-ticket.html">Raise Ticket</a></li>
+      <li><a href="my-tickets.html">My Tickets</a></li>
+      <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+    </ul>
+  </div>
+  <div class="app-nav__user">
+    <span class="user-chip" id="nav-user">Not signed in</span>
+    <button class="app-nav__signout" id="nav-signout" type="button">Sign out</button>
+  </div>
+</nav>
+
+<div class="page">
+
+  <a href="my-tickets.html" class="back-link" id="back-link">&larr; Back</a>
+
+  <div id="detail-view" class="card" style="display:none;">
+
+    <div class="detail-head">
+      <div>
+        <h1 id="detail-title"></h1>
+        <span class="detail-id" id="detail-id"></span>
+        <div class="badge-row">
+          <span class="badge" id="priority-badge"></span>
+          <span class="badge" id="status-badge"></span>
+        </div>
+      </div>
+    </div>
+
+    <p class="sla-banner" id="sla-banner"></p>
+
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="detail-item__label">Raised by</div>
+        <div class="detail-item__value" id="detail-raisedby"></div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-item__label">Category</div>
+        <div class="detail-item__value" id="detail-category"></div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-item__label">Created</div>
+        <div class="detail-item__value is-mono" id="detail-created"></div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-item__label">Resolution due</div>
+        <div class="detail-item__value is-mono" id="detail-due"></div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-item__label">Resolved at</div>
+        <div class="detail-item__value is-mono" id="detail-resolved"></div>
+      </div>
+    </div>
+
+    <div class="detail-desc">
+      <h2>Description</h2>
+      <p id="detail-description"></p>
+    </div>
+
+    <div class="admin-panel" id="admin-panel" style="display:none;">
+      <h2>Update status</h2>
+      <div class="field-row">
+        <div class="field">
+          <label for="status-update">Status</label>
+          <select id="status-update">
+            <option value="New">New</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+            <option value="Closed">Closed</option>
+          </select>
+        </div>
+        <div class="field">
+          <button type="button" class="btn-primary btn-primary--inline" id="save-status">Save status</button>
+        </div>
+      </div>
+      <p class="form-note" id="status-note" role="alert"></p>
+    </div>
+
+  </div>
+
+  <div id="not-found" class="card not-found" style="display:none;">
+    <h1>Ticket not found</h1>
+    <p>We couldn't find a ticket with that reference.</p>
+    <a href="my-tickets.html" class="btn-primary btn-primary--inline" style="display:inline-block;">Back to My Tickets</a>
+  </div>
+
+</div>
+
+<script src="js/ticket-detail.js"></script>
+</body>
+</html>
