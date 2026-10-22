@@ -41,3 +41,11 @@ INSERT IGNORE INTO sla_rules(priority, reponse_time_limit, resolution_time_limit
 ('High','2h','8h'),
 ('Medium','4h','24h'),
 ('Low','8h','48h');
+
+INSERT INTO tickets (title, description, category, priority, status, raised_by, created_at, resolution_due) 
+VALUES 
+('VPN Connection Failing', 'Unable to connect to corporate VPN after the latest security patch. Error code: 809.', 'Network', 'High', 'New', 'employee@company.com', NOW(), DATE_ADD(NOW(), INTERVAL 8 HOUR)),
+('Laptop Battery Draining Fast', 'Battery drops from 100% to 0% within 20 minutes. Tried power resets.', 'Hardware', 'Medium', 'In Progress', 'employee@company.com', NOW(), DATE_ADD(NOW(), INTERVAL 24 HOUR)),
+('Database Portal Locked Out', 'Locked out of staging environment after multiple incorrect password attempts.', 'Access', 'Low', 'Resolved', 'employee@company.com', NOW(), DATE_ADD(NOW(), INTERVAL 72 HOUR)),
+('API Gateway Null Pointer Exception', 'Backend service throwing unexpected errors on authentication endpoints.', 'Software', 'Critical', 'New', 'employee@company.com', NOW(), DATE_ADD(NOW(), INTERVAL 2 HOUR)),
+('Dual Monitor Request', 'Requesting an additional monitor to improve multitasking workflow.', 'Other', 'Low', 'Closed', 'employee@company.com', NOW(), DATE_ADD(NOW(), INTERVAL 72 HOUR));
